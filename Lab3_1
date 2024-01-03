@@ -31,21 +31,3 @@ VR1_cpx = Iin_cpx * ZR1_cpx
 
 VL1_abs = abs(VL1_cpx)
 VL1_phase = angle(VL1_cpx)/pi*180
-
-IL1_cpx = Iin_cpx
-IR1_cpx = Iin_cpx
-IC2_cpx = VC2_cpx / ZC2_cpx
-IR2_cpx = VR2_cpx / ZR2_cpx
-IR3_cpx = VR3_cpx / ZR3_cpx
-IL3_cpx = VL3_cpx / ZL3_cpx
-
-SL1_cpx = 1/2 * VL1_cpx * IL1_cpx'
-SR1_cpx = 1/2 * VR1_cpx * IR1_cpx'
-SC2_cpx = 1/2 * VC2_cpx * IC2_cpx'
-SR2_cpx = 1/2 * VR2_cpx * IR2_cpx'
-SR3_cpx = 1/2 * VR3_cpx * IR3_cpx'
-SL3_cpx = 1/2 * VL3_cpx * IL3_cpx'
-
-Sin_cpx = 1/2 * Vin_cpx * (-Iin_cpx)'
-
-Tellegen_s_Theorem = SL1_cpx + SR1_cpx + SC2_cpx + SR2_cpx + SR3_cpx + SL3_cpx + Sin_cpx
