@@ -1,7 +1,7 @@
 format compact
 clc
 
-Vin_abs = 5;
+Vin_abs = 5sqrt(2);
 Vin_phase = 0;
 Vin_cpx = Vin_abs*exp(j*Vin_phase/180*pi)
 
