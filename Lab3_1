@@ -12,22 +12,13 @@ R = 1000;
 R1 = 1000;
 L1 = 32.e-3; XL1 = w*L1
 
-
-ZR_cpx = R1 + j*0
-ZR1_cpx = R2 + j*0
+ZR_cpx = R + j*0
+ZR1_cpx = R1 + j*0
 ZL1_cpx = 0 + j*XL1
 
-Zeq1_cpx = ZR1_cpx + ZL1_cpx
+Zeq1_cpx = ZR_cpx + ZL1_cpx
 Zeq1_abs = abs(Zeq1_cpx)
 Zeq1_angle = angle(Zeq1_cpx)/pi*180
-
-Zeq2_cpx = ZC2_cpx * ZR2_cpx / (ZC2_cpx + ZR2_cpx)
-Zeq2_abs = abs(Zeq2_cpx)
-Zeq2_angle = angle(Zeq2_cpx)/pi*180
-
-Zeq3_cpx = ZR3_cpx * ZL3_cpx / (ZR3_cpx + ZL3_cpx)
-Zeq3_abs = abs(Zeq3_cpx)
-Zeq3_angle = angle(Zeq3_cpx)/pi*180
 
 Zin_cpx = Zeq1_cpx + Zeq2_cpx + Zeq3_cpx
 Zin_abs = abs(Zin_cpx)
