@@ -5,8 +5,9 @@ Vin_abs = 5;
 Vin_phase = 0;
 Vin_cpx = Vin_abs*exp(j*Vin_phase/180*pi)
 
-w = 1.e3;
-f = w/2/pi
+
+f = 10e+03;
+w = 2*pi*f;
 
 R = 1000;
 R1 = 1000;
@@ -16,25 +17,20 @@ ZR_cpx = R + j*0
 ZR1_cpx = R1 + j*0
 ZL1_cpx = 0 + j*XL1
 
-Zeq1_cpx = ZR_cpx + ZL1_cpx
-Zeq1_abs = abs(Zeq1_cpx)
-Zeq1_angle = angle(Zeq1_cpx)/pi*180
-
-Zin_cpx = Zeq1_cpx + Zeq2_cpx + Zeq3_cpx
-Zin_abs = abs(Zin_cpx)
+Zin_cpx = ZR_cpx + ZL1_cpx + ZR1_cpx
+Zin_cpx = abs(Zin_cpx)
 Zin_angle = angle(Zin_cpx)/pi*180
 
-
-Vin_cpx = Iin_cpx * Zin_cpx
-Vin_abs = abs(Vin_cpx)
-Vin_phase = angle(Vin_cpx)/pi*180
+Iin_cpx = Vin_cpx * Zin_cpx
+Iin_abs = abs(Iin_cpx)
+Iin_phase = angle(Iin_cpx)/pi*180
 
 VL1_cpx = Iin_cpx * ZL1_cpx
+VR_cpx = Iin_cpx * ZR_cpx
 VR1_cpx = Iin_cpx * ZR1_cpx
-VC2_cpx = Iin_cpx * Zeq2_cpx
-VR2_cpx = VC2_cpx
-VR3_cpx = Iin_cpx * Zeq3_cpx
-VL3_cpx = VR3_cpx
+
+VL1_abs = abs(VL1_cpx)
+VL1_phase = angle(VL1_cpx)/pi*180
 
 IL1_cpx = Iin_cpx
 IR1_cpx = Iin_cpx
