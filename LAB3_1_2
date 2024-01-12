@@ -1,0 +1,42 @@
+format compact
+clc
+
+Vin_abs = 5*sqrt(2);
+Vin_phase = 0;
+Vin_cpx = Vin_abs*exp(j*Vin_phase/180*pi)
+
+f = [50,100,200,600,1e+03,2e+03,5e+03,10e+03];
+w = 2*pi*f;
+
+R = 0;
+R0 = 1000;
+L1 = 30e-3; 
+
+XL1 = w*L1
+
+ZR_cpx = R + j*0
+ZR0_cpx = R0 + j*0
+ZL1_cpx = 0 + j*XL1
+
+Zin_cpx = ZR_cpx + ZL1_cpx + ZR0_cpx
+Zin_abs = abs(Zin_cpx)
+Zin_angle = angle(Zin_cpx)/pi*180
+
+Iin_cpx = Vin_cpx./Zin_cpx
+Iin_abs = abs(Iin_cpx)
+Iin_phase = angle(Iin_cpx)/pi*180
+
+VL1_cpx = Iin_cpx .* ZL1_cpx
+VL1_abs = abs(VL1_cpx)
+VL1_rms = VL1_abs./sqrt(2)
+VL1_phase = angle(VL1_cpx)/pi*180
+
+VR_cpx = Iin_cpx * ZR_cpx
+VR_abs = abs(VR_cpx)
+VR_rms = VR_abs./sqrt(2)
+VR_phase = angle(VR_cpx)/pi*180
+
+VR0_cpx = Iin_cpx * ZR0_cpx
+VR0_abs = abs(VR0_cpx)
+VR0_rms = VR0_abs./sqrt(2)
+VR0_phase = angle(VR0_cpx)/pi*180
