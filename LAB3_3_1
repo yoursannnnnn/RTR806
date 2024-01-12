@@ -1,0 +1,59 @@
+format compact
+clc
+
+Vin_abs = 5*sqrt(2);
+Vin_phase = 0;
+Vin_cpx = Vin_abs*exp(j*Vin_phase/180*pi)
+
+f = 10e+03;
+w = 2*pi*f;
+
+R = 8000;
+R0 = 1000;
+R1 = 100;
+C1 = 2200e-12; 
+
+XC1 = 1/(w*C1)
+
+ZR_cpx = R + j*0
+ZR0_cpx = R0 + j*0
+ZR1_cpx = R1 + j*0
+ZC1_cpx = 0 - j*XC1
+
+Zeq1_cpx = ZR_cpx + ZR1_cpx
+Zeq2_cpx = Zeq1_cpx*ZC1_cpx/(Zeq1_cpx+ZC1_cpx)
+Zin_cpx = Zeq2_cpx + ZR0_cpx
+Zin_abs = abs(Zin_cpx)
+Zin_angle = angle(Zin_cpx)/pi*180
+
+Iin_cpx = Vin_cpx / Zin_cpx
+Iin_abs = abs(Iin_cpx)
+Iin_phase = angle(Iin_cpx)/pi*180
+
+IC_cpx = Zeq1_cpx*Iin_cpx/(ZC1_cpx+Zeq1_cpx)
+IC_abs = abs(IC_cpx)
+IC_phase = angle(IC_cpx)/pi*180
+
+IR_cpx = ZC1_cpx*Iin_cpx/(ZC1_cpx+Zeq1_cpx)
+IR_abs = abs(IR_cpx)
+IR_phase = angle(IR_cpx)/pi*180
+
+VC1_cpx = IC_cpx * ZC1_cpx
+VC1_abs = abs(VC1_cpx)
+VC1_phase = angle(VC1_cpx)/pi*180
+VC1_rms = VC1_abs/sqrt(2)
+
+VR_cpx = IR_cpx * ZR_cpx
+VR_abs = abs(VR_cpx)
+VR_phase = angle(VR_cpx)/pi*180
+VR_rms = VR_abs/sqrt(2)
+
+VR1_cpx = IR_cpx * ZR1_cpx
+VR1_abs = abs(VR1_cpx)
+VR1_phase = angle(VR1_cpx)/pi*180
+VR1_rms = VR1_abs/sqrt(2)
+
+VR0_cpx = Iin_cpx * ZR0_cpx
+VR0_abs = abs(VR0_cpx)
+VR0_phase = angle(VR0_cpx)/pi*180
+VR0_rms = VR0_abs/sqrt(2)
